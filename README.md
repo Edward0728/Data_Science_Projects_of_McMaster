@@ -6,3 +6,5 @@ The projects here are from my university courses.
 Program.cs is the course project from Parallel Programming course.
 
 4DA3_Project_rev1.0 is the course project from Data Analytics and Big Data course.
+
+4NN3_Project_Final is the course project from Neural Network and Deep Learning course.
