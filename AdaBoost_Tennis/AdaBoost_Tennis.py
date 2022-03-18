@@ -1,5 +1,4 @@
 from numpy import *
-#import adaboost
 from sklearn.ensemble import AdaBoostClassifier
 from matplotlib import *
 from matplotlib.pyplot import *
@@ -7,7 +6,7 @@ from os import *
 print('reading data')
 # read the training and test files
 rawData = loadtxt(r'D:\Google Drive 1\McMaster Degree\Level 4-2\4DM3\week_6\tennis.txt', delimiter = ',')
-print('done')
+print('Done')
 # separate the training data and the class
 trainingData = rawData[:100,1:]
 trainingDataClass = rawData[:100,0]
