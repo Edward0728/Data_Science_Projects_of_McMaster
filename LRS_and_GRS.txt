@@ -1,0 +1,31 @@
+Q1: learn about Delta tables, and the sequential and parallel processing in it.
+About parallel processing:
+	* a problem that can be divided in an obvious way into 100% independent parts, which can be executed in parallel is an ideal parallel computation (embarassingly parallel).
+It requires no communication between seperate processes. 
+	* Many problems are not embarassingly parallel, which require us to discover the concurrency. Parallelism can exist in 2 main levels: task level and data level
+	* There are 3 common approaches for organizing parallelism at both the task level and the data level.
+		1. Divide and Conquer (task para): recursively split the problem data to feed into each processor
+		2. Loop unrolling (data para): unroll the independent loop (dependent and independent loop/interation)
+		3. Reduction (data para): use multiple threads to compute partial result
+		4. Pipleine (task and data para): perform sequential tasks in STAGES, where each stage is performed by a seperate processor
+
+Delta tables:
+	1. Databricks Delta is a component of the Databricks platform that provides a transactional storage layer on top of Apache Spark.
+	2. Delta Live Table (DLT) is a framework that can be used for building reliable, maintainable, and testable data processing pipelines on Delta Lake. 
+	3. Delta Lake supports most of the options provided by Apache Spark DataFrame read and write APIs for performing batch reads and writes on tables.
+	Spark/PySpark partitioning is a way to split the data into multiple partitions so that you can execute transformations on multiple partitions in parallel which allows 
+	completing the job faster. You can also write partitioned data into a file system (multiple sub-directories) for faster reads by downstream systems(further interpret upstream system. dependent on data from upstream system).
+
+Q2: Is cp, ls command in dbutils really parallel or it is actually sequential?
+	1. You can use Apache Spark to parallelize operations on executors. On Azure Databricks you can use DBUtils APIs, however these API calls are meant for use on driver nodes, and shouldn’t be used on Spark jobs running on executors.In this article, we are going to show you how to use the Apache Hadoop FileUtil function along with DBUtils to parallelize a Spark copy operation.
+	2. The best way I found to parallelize such embarassingly parallel tasks in databricks is using pandas UDF
+	
+Key points:
+
+Q1: Delta table: transactional storage layer for building pipeline
+	Pyspark split the data into partitions then we can do parallel processing
+Q2: dbutils.ls/cp is parallel for driver nodes
+	Hadoop FileUtil can be used for Spark copy operation 
+	Another option is use pandas UDF
+	
+
